@@ -4,18 +4,31 @@ import conexion from './conexion.js';
 import { router } from './routers/rutas.js';
 import {metodo as autenticacion} from "./controles/controlador.js";
 import session from 'express-session';
+import dotenv from 'dotenv'; 
 
+dotenv.config();
 const app = express();
 
+
+app.use(session({ 
+    secret: process.env.SESSION_SECRET, 
+    resave: false, saveUninitialized: false, 
+    cookie: { 
+        maxAge: 1000 * 60 * 60 * 2, 
+        secure: false 
+    } 
+}));
+/*
 app.use(session({
     secret: 'clave_', 
     resave: true,
     saveUninitialized: true,
     cookie: { secure: false } // Cambiar a true en producción con HTTPS
-}));
+}));*/
 
 //servidor
-app.set("port",3000);
+const port = process.env.PORT || 3000; 
+app.set("port",port);
 app.listen(app.get("port"));
 console.log("Servidor corriendo en puerto",app.get("port"));
 
