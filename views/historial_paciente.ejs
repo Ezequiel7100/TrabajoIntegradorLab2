@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial del Paciente</title>
+    <link rel="stylesheet" href="./estilo.css">
+    <script src="./paciente.js" defer></script>
+    <!-- Incluye Quill -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Historia Clínica del Paciente</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="volver">Volver a Agenda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="historia-clinica card" id="historia-clinica">
+
+        </section>
+
+        <!-- Habitos -->
+        <form id="form-habitos" class="card">
+            <h3>Hábitos</h3>
+            <label for="detalle-habito">Detalle:</label>
+            <input type="text" id="detalle-habito" name="detalle">
+            <label for="fecha-desde-habito">Fecha Desde:</label>
+            <input type="date" id="fecha-desde-habito" name="fecha_desde">
+            <label for="fecha-hasta-habito">Fecha Hasta:</label>
+            <input type="date" id="fecha-hasta-habito" name="fecha_hasta">
+            <button type="submit">Guardar Hábito</button>
+        </form>
+
+        <!-- Antecedentes -->
+        <form id="form-antecedentes" class="card">
+            <h3>Antecedentes Patológicos</h3>
+            <label for="detalle-antecedente">Detalle:</label>
+            <input type="text" id="detalle-antecedente" name="detalle">
+            <label for="fecha-desde-antecedente">Fecha Desde:</label>
+            <input type="date" id="fecha-desde-antecedente" name="fecha_desde">
+            <label for="fecha-hasta-antecedente">Fecha Hasta:</label>
+            <input type="date" id="fecha-hasta-antecedente" name="fecha_hasta">
+            <button type="submit">Guardar Antecedente</button>
+        </form>
+
+        <!-- Medicamentos -->
+        <form id="form-medicamentos" class="card">
+            <h3>Medicamentos en Uso</h3>
+            <label for="detalle-medicamento">Detalle:</label>
+            <input type="text" id="detalle-medicamento" name="detalle">
+            <button type="submit">Guardar Medicamento</button>
+        </form>
+
+
+        <!-- Alergias -->
+        <form id="form-alergias" class="card"> 
+            <h3>Alergias</h3>
+            <label for="nombre-alergia">Nombre:</label> 
+            <input type="text" id="nombre-alergia"
+                name="nombre"> <label for="importancia-alergia">Importancia:</label> 
+                <select id="importancia-alergia"
+                name="importancia">
+                <option value="leve">Leve</option>
+                <option value="normal">Normal</option>
+                <option value="alta">Alta</option>
+            </select> 
+            <label for="fecha-desde-alergia">Fecha Desde:</label> 
+            <input type="date" id="fecha-desde-alergia"name="fecha_desde"> 
+            <label for="fecha-hasta-alergia">Fecha Hasta:</label> 
+            <input type="date"id="fecha-hasta-alergia" name="fecha_hasta"> 
+            <button type="submit">Guardar Alergia</button> 
+        </form>
+        
+        <form id="form-guardar" class="card">
+            <h3>Registrar nueva consulta</h3>
+            
+            <label for="motivo">Motivo de consulta:</label>
+            <input type="text" id="motivo" name="motivo">
+    
+            <label for="fecha">Fecha de consulta:</label>
+            <input type="date" id="fecha" name="fecha">
+    
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado">
+                <option value="pendiente">Pendiente</option>
+                <option value="atendido">Atendido</option>
+            </select>
+    
+            <label for="diagnostico">Diagnóstico:</label>
+            <input type="text" id="diagnostico" name="diagnostico">
+    
+            <label for="evolucion">Evolución:</label>
+            <div id="editor-container"></div>
+    
+            <label for="fecha-evolucion">Fecha de evolución:</label>
+            <input type="date" id="fecha-evolucion" name="fecha-evolucion">
+    
+            <button type="submit" id="guardar">Guardar</button>
+        </form>
+
+        <!-- Inicializa Quill -->
+        <script>
+            var quill = new Quill('#editor-container', {
+                theme: 'snow'
+            });
+        </script>
+
+    </main>
+
+    <footer>
+        <p>© 2024 Atención Médica</p>
+    </footer>
+
+</html>
